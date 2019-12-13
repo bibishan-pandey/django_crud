@@ -39,5 +39,7 @@ def employee_form(request, id=None):
         return render(request, 'employee/employee_form.html', context)
 
 
-def employee_delete(request):
-    pass
+def employee_delete(request, id):
+    employee = Employee.objects.get(pk=id)
+    employee.delete()
+    return redirect('list')
