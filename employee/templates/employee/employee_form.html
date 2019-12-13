@@ -1,4 +1,19 @@
 {% extends 'employee/base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
-    <h1>Form</h1>
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-6">{{ form.full_name|as_crispy_field }}</div>
+            <div class="col-6">{{ form.mobile|as_crispy_field }}</div>
+        </div>
+        <div class="row">
+            <div class="col-6">{{ form.emp_code|as_crispy_field }}</div>
+            <div class="col-6">{{ form.position|as_crispy_field }}</div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-outline-dark">SAVE</button>
+            <a href="{% url 'list' %}" class="btn btn-outline-primary">BACK</a>
+        </div>
+    </form>
 {% endblock content %}

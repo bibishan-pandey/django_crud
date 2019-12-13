@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.employee_list),
-    path('form/', views.employee_form)
+    path('', views.employee_list, name='list'),
+    path('form/', views.employee_form, name='form'),
+    path('form/<int:id>/', views.employee_form, name='edit')
 ]
